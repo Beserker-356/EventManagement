@@ -3,8 +3,9 @@ package com.example.eventmanagement.Controller;
 import com.example.eventmanagement.Models.Participant;
 import com.example.eventmanagement.Models.Registration;
 import com.example.eventmanagement.Services.ParticipantService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/participant")
@@ -20,8 +21,13 @@ public class ParticipantController {
     }
 
     @PutMapping("")
-    public Participant deleteParticipant(@RequestBody Participant participant) {
-        return null;
+    public Participant updateParticipant(@RequestBody Participant participant) {
+        return participantService.updateParticipant(participant);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteParticipant(@PathVariable Long id) {
+        participantService.deleteParticipant(id);
     }
 
     @PostMapping ("/register")
