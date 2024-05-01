@@ -8,10 +8,10 @@ import java.util.Optional;
 public interface ParticipantService {
     Participant createParticipant(Participant participant);
 
-    Optional<Participant> updateParticipant(Participant participant) throws ParticipantNotFoundException;
+    Optional<Participant> updateParticipant(Participant participant);
 
     void deleteParticipant(Long id);
 
-    Optional<Participant> getParticipantById(Long id);
+    public Participant getParticipantById(Long id);
 
 }
