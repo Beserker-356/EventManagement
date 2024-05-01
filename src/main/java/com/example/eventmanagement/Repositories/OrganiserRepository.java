@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface OrganiserRepository extends JpaRepository<Organiser, Long>{
-
     Organiser save(Organiser organiser);
 
     void deleteById(Long organiserId);
