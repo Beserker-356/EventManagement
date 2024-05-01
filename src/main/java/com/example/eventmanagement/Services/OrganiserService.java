@@ -4,4 +4,6 @@ import com.example.eventmanagement.Models.Organiser;
 
 public interface OrganiserService {
     Organiser createOrganiser(Organiser organiser);
+
+
 }
