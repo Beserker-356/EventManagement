@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+
 public class Organiser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
