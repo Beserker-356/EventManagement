@@ -6,11 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Event {
-    private long id;
+    private long eventId;
     private String name;
-    private String desc;
-    private String date;
-    private int startTime;
-    private int endTime;
-    private Venue venue;
+    private String description;
+
+//    private double entryFees;
 }
