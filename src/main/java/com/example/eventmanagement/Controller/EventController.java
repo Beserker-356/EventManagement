@@ -1,10 +1,12 @@
 package com.example.eventmanagement.Controller;
 
 import com.example.eventmanagement.Dtos.EventDto;
+import com.example.eventmanagement.Dtos.ScheduleDto;
 import com.example.eventmanagement.Exceptions.OrganiserNotFoundException;
 import com.example.eventmanagement.Exceptions.OrganiserPassMismatchException;
 import com.example.eventmanagement.Models.Event;
 import com.example.eventmanagement.Models.Organiser;
+import com.example.eventmanagement.Models.Schedule;
 import com.example.eventmanagement.Services.EventService;
 import com.example.eventmanagement.Services.OrganiserService;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +61,24 @@ public class EventController {
             throw new OrganiserPassMismatchException("Incorrect password for organiser " + org.getName());
 
         return this.eventService.deleteEvent(eventId);
+    }
+
+
+    //Schedule CRUD operations
+    @PostMapping("/{orgId}/schedule")
+    public Schedule createSchedule(@PathVariable("orgId") long orgId, @RequestBody ScheduleDto scheduleDto) {
+        Organiser org = this.organiserService.getOrganiserById(orgId);
+        String password = org.getPassword();
+
+        if (!password.equals(scheduleDto.getPassword()))
+            throw new OrganiserPassMismatchException("Incorrect password for organiser " + org.getName());
+
+        return this.eventService.createSchedule(scheduleDto);
+    }
+
+    @GetMapping("/schedule/{scheduleId}")
+    public Schedule getScheduleById(@PathVariable long scheduleId) {
+        return this.eventService.getScheduleById(scheduleId);
     }
 
 }

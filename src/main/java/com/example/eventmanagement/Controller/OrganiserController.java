@@ -43,26 +43,6 @@ public class OrganiserController {
     }
 
 
-    // Event CRUD operations
-    @PostMapping("/event")
-    public void createEvent() {
-        //organiserService.createEvent();
-    }
-
-    @PutMapping("/event")
-    public void updateEvent() {
-        //organiserService.updateEvent();
-    }
-
-    @DeleteMapping("/event")
-    public void deleteEvent() {
-        //organiserService.deleteEvent();
-    }
-
-    @GetMapping("/event")
-    public void getEvent() {
-        //organiserService.getEvent();
-    }
 
 
 
