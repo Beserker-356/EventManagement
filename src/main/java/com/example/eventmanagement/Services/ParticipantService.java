@@ -1,6 +1,5 @@
 package com.example.eventmanagement.Services;
 
-import com.example.eventmanagement.Exceptions.ParticipantNotFoundException;
 import com.example.eventmanagement.Models.Participant;
 
 import java.util.List;
@@ -11,10 +10,10 @@ public interface ParticipantService {
 
     Optional<Participant> updateParticipant(Participant participant);
 
+    List<Participant> getAllParticipants();
+
     void deleteParticipant(Long id);
 
-    Optional<Participant> getParticipantById(Long id);
-
-    List<Participant> getAllParticipants();
+    public Optional<Participant> getParticipantById(Long id);
 
 }
