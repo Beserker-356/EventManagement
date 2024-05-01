@@ -5,13 +5,14 @@ import com.example.eventmanagement.Models.Participant;
 import com.example.eventmanagement.Repositories.ParticipantRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ParticipantSecviceImpl implements ParticipantService{
+public class ParticipantServiceImpl implements ParticipantService{
     private ParticipantRepository participantRepository;
 
-    public ParticipantSecviceImpl(ParticipantRepository participantRepository) {
+    public ParticipantServiceImpl(ParticipantRepository participantRepository) {
         this.participantRepository = participantRepository;
     }
     @Override
@@ -33,6 +34,11 @@ public class ParticipantSecviceImpl implements ParticipantService{
             throw new ParticipantNotFoundException("Participant with the given "+id+" id not found!");
         }
         return existingParticipant;
+    }
+
+    @Override
+    public List<Participant> getAllParticipants() {
+        return participantRepository.findAll();
     }
 
     @Override
