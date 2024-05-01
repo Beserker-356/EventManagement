@@ -16,5 +16,4 @@ public interface AdminService {
 
     Venue getVenueById(long venueId);
 
-
 }
