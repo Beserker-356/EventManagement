@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/admin")
+@RequestMapping("/admin")
 public class AdminController {
 
     private AdminService adminService;
@@ -34,5 +34,9 @@ public class AdminController {
         return adminService.getVenueById(venueId);
     }
 
+    @PutMapping("{venueId}")
+    public Venue updateVenue(@PathVariable long venueId,@RequestBody Venue venue) {
+        return adminService.updateVenue(venue, venueId);
+    }
 
 }
