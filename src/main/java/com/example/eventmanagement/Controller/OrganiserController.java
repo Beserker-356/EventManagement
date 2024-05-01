@@ -22,9 +22,9 @@ public class OrganiserController {
         return organiserService.createOrganiser(organiser);
     }
 
-    @PutMapping("")
-    public Organiser updateOrganiser(@RequestBody Organiser organiser) {
-        return organiserService.updateOrganiser(organiser);
+    @PutMapping("/{id}")
+    public Organiser updateOrganiser(@PathVariable("id") long organiserId, @RequestBody Organiser organiser) {
+        return organiserService.updateOrganiser(organiser, organiserId);
     }
 
     @DeleteMapping("/{organiserId}")
