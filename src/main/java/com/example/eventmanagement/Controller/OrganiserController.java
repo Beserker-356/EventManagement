@@ -4,6 +4,8 @@ import com.example.eventmanagement.Models.Organiser;
 import com.example.eventmanagement.Services.OrganiserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/organiser")
 public class OrganiserController {
@@ -21,13 +23,23 @@ public class OrganiserController {
     }
 
     @PutMapping("")
-    public void updateOrganiser() {
-        //organiserService.updateOrganiser();
+    public Organiser updateOrganiser(@RequestBody Organiser organiser) {
+        return organiserService.updateOrganiser(organiser);
     }
 
-    @DeleteMapping("")
-    public void deleteOrganiser() {
-        //organiserService.deleteOrganiser();
+    @DeleteMapping("/{organiserId}")
+    public String deleteOrganiser(@PathVariable long organiserId) {
+        return organiserService.deleteOrganiser(organiserId);
+    }
+
+    @GetMapping("/{organiserId}")
+    public Organiser getOrganiser(@PathVariable long organiserId) {
+        return organiserService.getOrganiserById(organiserId);
+    }
+
+    @GetMapping("")
+    public List<Organiser> getAllOrganisers() {
+        return organiserService.getAllOrganisers();
     }
 
 
