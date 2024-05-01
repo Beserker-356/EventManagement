@@ -10,5 +10,7 @@ import java.util.List;
 public class Organiser {
     private long organiserId;
     private String name;
-    private List<Event> events;
+    private String email;
+    private long phone_no;
+
 }
