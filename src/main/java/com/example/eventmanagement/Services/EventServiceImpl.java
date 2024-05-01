@@ -3,6 +3,7 @@ package com.example.eventmanagement.Services;
 import com.example.eventmanagement.Dtos.EventDto;
 import com.example.eventmanagement.Dtos.ScheduleDto;
 import com.example.eventmanagement.Exceptions.EventNotFoundException;
+import com.example.eventmanagement.Exceptions.ScheduleCoincidingException;
 import com.example.eventmanagement.Models.Event;
 import com.example.eventmanagement.Models.Schedule;
 import com.example.eventmanagement.Models.Venue;
@@ -82,7 +83,13 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public Schedule createSchedule(ScheduleDto scheduleDto) {
-        Schedule schedule = this.scheduleRepository.save(convertScheduleDtoToSchedule(scheduleDto));
+        Schedule schedule = convertScheduleDtoToSchedule(scheduleDto);
+        List<Schedule> schedules = this.scheduleRepository.findByStartTimeLessThanEqualAndEndTimeGreaterThanEqualAndVenue(schedule.getEndTime(), schedule.getStartTime(), schedule.getVenue());
+
+        if (!schedules.isEmpty())
+            throw new ScheduleCoincidingException("Schedule with overlapping time intervals already exists , please change the time interval or venue");
+
+        schedule = this.scheduleRepository.save(schedule);
         return schedule;
     }
 
