@@ -36,7 +36,6 @@ public class OrganiserServiceImpl implements OrganiserService{
     @Override
     public Organiser getOrganiserById(long organiserId) {
         return organiserRepository.findById(organiserId).orElse(null);
-
     }
 
     @Override
