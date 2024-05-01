@@ -14,6 +14,7 @@ public class Venue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long venueId;
+
     private String name;
     private String address;
     private long capacity;

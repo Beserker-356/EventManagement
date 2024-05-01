@@ -1,6 +1,7 @@
 package com.example.eventmanagement.Repositories;
 
 import com.example.eventmanagement.Models.Event;
+import com.example.eventmanagement.Models.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     void deleteById(long eventId);
     Optional<Event> findById(long eventId);
     List<Event> findAll();
+
+
 }

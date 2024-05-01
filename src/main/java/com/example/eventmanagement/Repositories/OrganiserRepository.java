@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface OrganiserRepository extends JpaRepository<Organiser, Long>{
+public interface OrganiserRepository extends JpaRepository<Organiser, Long> {
     Organiser save(Organiser organiser);
 
     void deleteById(Long organiserId);
@@ -16,6 +16,7 @@ public interface OrganiserRepository extends JpaRepository<Organiser, Long>{
     Optional<Organiser> findById(Long organiserId);
 
     List<Organiser> findAll();
+
 
 
 }
