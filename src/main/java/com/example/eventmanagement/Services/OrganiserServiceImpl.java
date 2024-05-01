@@ -1,5 +1,6 @@
 package com.example.eventmanagement.Services;
 
+import com.example.eventmanagement.Exceptions.OrganiserNotFoundException;
 import com.example.eventmanagement.Models.Organiser;
 import com.example.eventmanagement.Repositories.OrganiserRepository;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,11 @@ public class OrganiserServiceImpl implements OrganiserService{
     }
 
     @Override
-    public Organiser updateOrganiser(Organiser organiser) {
+    public Organiser updateOrganiser(Organiser organiser, long id) {
+        if (getOrganiserById(id) == null)
+            throw new OrganiserNotFoundException("Invalid organiserId passed",id);
+
+        organiser.setOrganiserId(id);
         Organiser org = organiserRepository.save(organiser);
         return org;
     }

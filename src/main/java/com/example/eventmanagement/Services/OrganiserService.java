@@ -8,7 +8,7 @@ public interface OrganiserService {
     Organiser createOrganiser(Organiser organiser);
     String deleteOrganiser(long organiserId);
 
-    Organiser updateOrganiser(Organiser organiser);
+    Organiser updateOrganiser(Organiser organiser, long id);
 
     Organiser getOrganiserById(long organiserId);
 
