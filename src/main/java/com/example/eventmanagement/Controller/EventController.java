@@ -1,6 +1,8 @@
 package com.example.eventmanagement.Controller;
 
 import com.example.eventmanagement.Dtos.EventDto;
+import com.example.eventmanagement.Exceptions.OrganiserNotFoundException;
+import com.example.eventmanagement.Exceptions.OrganiserPassMismatchException;
 import com.example.eventmanagement.Models.Event;
 import com.example.eventmanagement.Models.Organiser;
 import com.example.eventmanagement.Services.EventService;
@@ -33,7 +35,7 @@ public class EventController {
         String password = org.getPassword();
 
         if (!password.equals(eventDto.getPassword()))
-            return null;
+            throw new OrganiserPassMismatchException("Incorrect password for organiser " + org.getName());
 
         return this.eventService.createEvent(eventDto);
     }
@@ -44,7 +46,7 @@ public class EventController {
         String password = org.getPassword();
 
         if (!password.equals(eventDto.getPassword()))
-            return null;
+            throw new OrganiserPassMismatchException("Incorrect password for organiser " + org.getName());
         return this.eventService.updateEvent(eventDto, eventId);
     }
 
@@ -54,7 +56,7 @@ public class EventController {
         String password = org.getPassword();
 
         if (!password.equals(eventDto.getPassword()))
-            return null;
+            throw new OrganiserPassMismatchException("Incorrect password for organiser " + org.getName());
 
         return this.eventService.deleteEvent(eventId);
     }
