@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 
 public interface VenueRepository {
+    Venue save(Venue venue);
 
     List<Venue> findAll();
 
