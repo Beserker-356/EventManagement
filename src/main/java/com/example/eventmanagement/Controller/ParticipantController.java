@@ -21,7 +21,7 @@ public class ParticipantController {
     }
 
     @PutMapping("")
-    public Optional<Participant> updateParticipant(@RequestBody Participant participant) {
+    public Participant updateParticipant(@RequestBody Participant participant) {
         return participantService.updateParticipant(participant);
     }
 
