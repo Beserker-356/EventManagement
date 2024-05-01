@@ -26,7 +26,7 @@ public class ParticipantSecviceImpl implements ParticipantService{
         participantRepository.save(participant);
         return Optional.of(participant);
     }
-
+    @Override
     public Optional<Participant> getParticipantById(Long id) {
         Optional<Participant> existingParticipant = participantRepository.findById(id);
         if (existingParticipant.isEmpty()) {
