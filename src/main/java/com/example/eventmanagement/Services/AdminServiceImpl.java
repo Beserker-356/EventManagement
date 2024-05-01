@@ -31,4 +31,9 @@ public class AdminServiceImpl implements AdminService{
         return venueRepository.findById(venueId).orElse(null);
     }
 
+    @Override
+    public Venue updateVenue(Venue venue, long venueId) {
+        venue.setVenueId(venueId);
+        return venueRepository.save(venue);
+    }
 }
