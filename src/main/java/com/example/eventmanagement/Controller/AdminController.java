@@ -3,10 +3,9 @@ package com.example.eventmanagement.Controller;
 
 import com.example.eventmanagement.Models.Venue;
 import com.example.eventmanagement.Services.AdminService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping ("/admin")
@@ -23,6 +22,17 @@ public class AdminController {
     public Venue createVenue(@RequestBody Venue venue) {
         //AdminService.createVenue();
         return adminService.createVenue(venue);
+    }
+
+    @GetMapping("")
+    public List<Venue> getAllVenues() {
+        return adminService.getAllVenues();
+    }
+
+
+    @GetMapping("/{venueId}")
+    public Venue getVenueById(@PathVariable long venueId) {
+        return adminService.getVenueById(venueId);
     }
 
 
