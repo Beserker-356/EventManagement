@@ -2,6 +2,7 @@ package com.example.eventmanagement.Services;
 
 import com.example.eventmanagement.Exceptions.ParticipantNotFoundException;
 import com.example.eventmanagement.Helper_enum.RegistrationStatus;
+import com.example.eventmanagement.Models.Participant;
 import com.example.eventmanagement.Models.Registration;
 import com.example.eventmanagement.Repositories.RegistrationRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,6 @@ public class RegistrationServiceImpl implements RegistrationService{
 
     @Override
     public Registration createRegister(Registration registration) {
-
         return registrationRepository.save(registration);
     }
 

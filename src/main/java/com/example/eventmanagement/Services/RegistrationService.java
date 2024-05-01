@@ -1,7 +1,5 @@
 package com.example.eventmanagement.Services;
 
-import com.example.eventmanagement.Exceptions.ParticipantNotFoundException;
-import com.example.eventmanagement.Models.Participant;
 import com.example.eventmanagement.Models.Registration;
 
 import java.util.Optional;

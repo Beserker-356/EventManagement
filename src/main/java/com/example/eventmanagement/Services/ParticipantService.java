@@ -3,6 +3,7 @@ package com.example.eventmanagement.Services;
 import com.example.eventmanagement.Exceptions.ParticipantNotFoundException;
 import com.example.eventmanagement.Models.Participant;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ParticipantService {
@@ -12,6 +13,8 @@ public interface ParticipantService {
 
     void deleteParticipant(Long id);
 
-    public Participant getParticipantById(Long id);
+    Optional<Participant> getParticipantById(Long id);
+
+    List<Participant> getAllParticipants();
 
 }
