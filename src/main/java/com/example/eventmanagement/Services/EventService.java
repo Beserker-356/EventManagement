@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface EventService {
     Event getEventById(long id);
-    Event createEvent(EventDto eventDto);
-    Event updateEvent(EventDto eventDto, long id);
-    String deleteEvent(long eventId);
+    Event createEvent(EventDto eventDto, long orgId);
+    Event updateEvent(EventDto eventDto, long eventId, long orgId);
+    String deleteEvent(EventDto eventDto, long eventId, long orgId);
     List<Event> getAllEvents();
 
 

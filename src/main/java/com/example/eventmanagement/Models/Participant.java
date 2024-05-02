@@ -18,4 +18,9 @@ public class Participant {
     private String name;
     private String email;
     private long phone_no;
+
+    public String toString() {
+        return "{ name: "+ name +", email: " + email +", phone_no: " + phone_no + "}";
+    }
+
 }
