@@ -5,5 +5,5 @@ import java.util.concurrent.RejectedExecutionException;
 public enum RegistrationStatus {
     ACCEPTED,
     REJECTED,
-    PENDING
+    CANCELLED
 }

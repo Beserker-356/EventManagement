@@ -31,11 +31,12 @@ public class RegistrationController {
         registrationService.deleteRegistration(id);
     }
 
-    @PutMapping("")
-    public Optional<Registration> cancelRegistration(@RequestBody Registration registration) {
+    @PutMapping("/{id}")
+    public Optional<Registration> cancelRegistration(@PathVariable Long id) {
         LOGGER.info(port + " -> PUT request received to update Registration");
-        return registrationService.cancelRegistration(registration);
+        return registrationService.cancelRegistration(id);
     }
+
     public Optional<Registration> updateRegistration(@RequestBody Registration registration) {
         return registrationService.updateRegistration(registration);
     }
@@ -48,10 +49,5 @@ public class RegistrationController {
     @GetMapping("/{id}")
     public Optional<Registration> getRegistrationById(@PathVariable Long id) {
         return registrationService.getRegistrationById(id);
-    }
-
-    @PutMapping("")
-    public Optional<Registration> cancelRegistration(@RequestBody Registration registration) {
-        return registrationService.cancelRegistration(registration);
     }
 }
