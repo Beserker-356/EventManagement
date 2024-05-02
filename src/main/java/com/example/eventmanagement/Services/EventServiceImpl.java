@@ -3,8 +3,11 @@ package com.example.eventmanagement.Services;
 import com.example.eventmanagement.Dtos.EventDto;
 import com.example.eventmanagement.Dtos.ScheduleDto;
 import com.example.eventmanagement.Exceptions.EventNotFoundException;
+import com.example.eventmanagement.Exceptions.OrganiserNotFoundException;
+import com.example.eventmanagement.Exceptions.OrganiserPassMismatchException;
 import com.example.eventmanagement.Exceptions.ScheduleCoincidingException;
 import com.example.eventmanagement.Models.Event;
+import com.example.eventmanagement.Models.Organiser;
 import com.example.eventmanagement.Models.Schedule;
 import com.example.eventmanagement.Models.Venue;
 import com.example.eventmanagement.Repositories.EventRepository;
@@ -18,13 +21,27 @@ import java.util.List;
 public class EventServiceImpl implements EventService{
 
     private EventRepository eventRepository;
+    private OrganiserService organiserService;
 
+    private boolean validateOrganiser(long ordId, EventDto eventDto) {
+        Organiser org = this.organiserService.getOrganiserById(ordId);
+        if(org == null)
+            throw new OrganiserNotFoundException("Invalid orgID", ordId);
+
+        String password = org.getPassword();
+
+        if(!password.equals(eventDto.getPassword()))
+            throw new OrganiserPassMismatchException("Incorrect password for " + org.getName());
+
+        return true;
+    }
     private ScheduleRepository scheduleRepository;
 
     private VenueRepository venueRepository;
 
-    public EventServiceImpl(EventRepository eventRepository, ScheduleRepository scheduleRepository, VenueRepository venueRepository) {
+    public EventServiceImpl(OrganiserService organiserService, EventRepository eventRepository, ScheduleRepository scheduleRepository, VenueRepository venueRepository) {
         this.eventRepository = eventRepository;
+        this.organiserService = organiserService;
         this.scheduleRepository = scheduleRepository;
         this.venueRepository = venueRepository;
     }
@@ -55,25 +72,35 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event createEvent(EventDto eventDto) {
-        Event event = this.eventRepository.save(convertEventDtoToEvent(eventDto));
-        return event;
+    public Event createEvent(EventDto eventDto, long orgId) {
+        if (validateOrganiser(orgId, eventDto))
+            return this.eventRepository.save(convertEventDtoToEvent(eventDto));
+        return null;
     }
 
     @Override
-    public Event updateEvent(EventDto eventDto, long id) {
-        if (getEventById(id) == null)
-            throw new EventNotFoundException("Invalid EventId passed", id);
+    public Event updateEvent(EventDto eventDto, long eventId, long orgId) {
+        if (getEventById(eventId) == null)
+            throw new EventNotFoundException("Invalid EventId passed", eventId);
 
-        Event event = convertEventDtoToEvent(eventDto);
-        event.setEventId(id);
-        return this.eventRepository.save(event);
+        if (validateOrganiser(orgId, eventDto)) {
+            Event event = convertEventDtoToEvent(eventDto);
+            event.setEventId(orgId);
+            return this.eventRepository.save(event);
+        }
+        return null;
     }
 
     @Override
-    public String deleteEvent(long eventId) {
-        this.eventRepository.deleteById(eventId);
-        return "Event with ID " + eventId + " deleted successfully";
+    public String deleteEvent(EventDto eventDto, long eventId, long orgId) {
+        if(getEventById(eventId) == null)
+            throw new EventNotFoundException("Invalid eventID", eventId);
+
+        if (validateOrganiser(orgId, eventDto)) {
+            this.eventRepository.deleteById(eventId);
+            return "Event with ID " + eventId + " deleted successfully";
+        }
+        return null;
     }
 
     @Override

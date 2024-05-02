@@ -1,0 +1,5 @@
+2024-05-02 08:42:25.855 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant -> POST request received to create a Participant with request body:{ name: e12, email: null, phone_no: 0}
+2024-05-02 08:42:42.285 [http-nio-8080-exec-3] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/3 -> GET request received for Participant with ID:3
+2024-05-02 09:40:26.873 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/3 -> GET request received for Participant with ID:3
+2024-05-02 09:42:39.638 [http-nio-8080-exec-5] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant -> POST request received to create a Participant with request body:{ name: e123, email: chess, phone_no: 0}
+2024-05-02 12:02:55.486 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create event for Organiser ID: 11 with request body:{ name: e123, description: null, password: null}

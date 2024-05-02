@@ -23,4 +23,7 @@ public class Organiser {
     private long phone_no;
     private String password;
 
+    public String toString() {
+        return "{ name: "+ name +", email: " + email +", phone_no: " + phone_no +", password: " + password + "}";
+    }
 }
