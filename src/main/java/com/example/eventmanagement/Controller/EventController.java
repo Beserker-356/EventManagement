@@ -29,7 +29,7 @@ public class EventController {
         LOGGER.info(port + "/" + eventId + " -> GET request received for Event ID: {}", eventId);
         return this.eventService.getEventById(eventId);
     }
-    @GetMapping()
+    @GetMapping("")
     public List<Event> getAllEvents() {
         LOGGER.info(port + " -> GET request received for all events");
         return this.eventService.getAllEvents();
