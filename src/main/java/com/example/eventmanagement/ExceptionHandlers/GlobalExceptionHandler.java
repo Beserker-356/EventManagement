@@ -1,9 +1,7 @@
 package com.example.eventmanagement.ExceptionHandlers;
 
 import com.example.eventmanagement.Dtos.ExceptionDto;
-import com.example.eventmanagement.Exceptions.EventNotFoundException;
-import com.example.eventmanagement.Exceptions.OrganiserNotFoundException;
-import com.example.eventmanagement.Exceptions.OrganiserPassMismatchException;
+import com.example.eventmanagement.Exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -38,4 +36,23 @@ public class GlobalExceptionHandler {
         ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.NOT_FOUND);
         return response;
     }
+
+    @ExceptionHandler(ParticipantNotFoundException.class)
+    public ResponseEntity<ExceptionDto> handleParticipantNotFoundException() {
+        ExceptionDto dto = new ExceptionDto();
+        dto.setMessage("Participant ID not found");
+
+        ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.NOT_FOUND);
+        return response;
+    }
+
+    @ExceptionHandler(ScheduleCoincidingException.class)
+    public ResponseEntity<ExceptionDto> handleScheduleCoincidingException() {
+        ExceptionDto dto = new ExceptionDto();
+        dto.setMessage("Time overlapping with existing schedules");
+
+        ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+        return response;
+    }
+
 }
