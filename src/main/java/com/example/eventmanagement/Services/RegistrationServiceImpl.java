@@ -25,11 +25,15 @@ public class RegistrationServiceImpl implements RegistrationService{
 
     @Override
     public Registration createRegister(Registration registration) {
-        Schedule schedule = registration.getSchedule();
+        Long sId = registration.getSchedule().getScheduleId();
+        Schedule schedule = scheduleRepository.findById(sId).orElse(null);
+        System.out.println("seats time:  "+ schedule.getStartTime());
         int seats = schedule.getRemainingSeats();
+        System.out.println("seats:  "+ seats);
         if (seats > 0) {
             schedule.setRemainingSeats(seats-1);
             registration.setStatus(RegistrationStatus.ACCEPTED);
+            System.out.println("seats 2:  "+ schedule.getRemainingSeats());
         }
         else {
             registration.setStatus(RegistrationStatus.REJECTED);

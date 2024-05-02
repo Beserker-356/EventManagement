@@ -11,3 +11,14 @@
 2024-05-02 13:14:01.152 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create event for Organiser ID: 11 with request body:{ name: Standup, description: samay raina, password: deepak12}
 2024-05-02 13:17:48.998 [http-nio-8080-exec-4] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create Schedule by Organiser ID: 11
 2024-05-02 13:22:21.235 [http-nio-8080-exec-8] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/schedule/1 -> GET request received for Schedule ID: 1
+2024-05-02 13:52:16.724 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant -> POST request received to create a Participant with request body:{ name: anshuman singh, email: boot@gmail.com, phone_no: 24356874895}
+2024-05-02 13:52:34.273 [http-nio-8080-exec-3] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> POST request received to register
+2024-05-02 13:58:10.913 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> POST request received to register
+2024-05-02 14:00:27.296 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> POST request received to register
+2024-05-02 14:05:50.265 [http-nio-8080-exec-4] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant -> POST request received to create a Participant with request body:{ name: anshuman singh2, email: boot@gmail.com, phone_no: 243568748952}
+2024-05-02 14:06:44.033 [http-nio-8080-exec-7] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> POST request received to register
+2024-05-02 14:06:58.802 [http-nio-8080-exec-8] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> PUT request received to update Registration
+2024-05-02 14:11:44.270 [http-nio-8080-exec-3] INFO  c.e.e.Controller.EventController - At http://localhost:8080/register -> PUT request received to update Registration
+2024-05-02 14:13:38.193 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/10 -> GET request received for Participant with ID:10
+2024-05-02 14:16:17.281 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/10 -> GET request received for Participant with ID:10
+2024-05-02 14:16:58.248 [http-nio-8080-exec-3] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/3 -> GET request received for Participant with ID:3
