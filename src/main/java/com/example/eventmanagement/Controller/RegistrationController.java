@@ -1,15 +1,13 @@
 package com.example.eventmanagement.Controller;
 
 
-import com.example.eventmanagement.Models.Participant;
 import com.example.eventmanagement.Models.Registration;
-import com.example.eventmanagement.Services.ParticipantService;
 import com.example.eventmanagement.Services.RegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/register")
@@ -36,6 +34,24 @@ public class RegistrationController {
     @PutMapping("")
     public Optional<Registration> cancelRegistration(@RequestBody Registration registration) {
         LOGGER.info(port + " -> PUT request received to update Registration");
+        return registrationService.cancelRegistration(registration);
+    }
+    public Optional<Registration> updateRegistration(@RequestBody Registration registration) {
+        return registrationService.updateRegistration(registration);
+    }
+
+    @GetMapping("")
+    public List<Registration> getAllRegistration() {
+        return registrationService.getAllRegistration();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Registration> getRegistrationById(@PathVariable Long id) {
+        return registrationService.getRegistrationById(id);
+    }
+
+    @PutMapping("")
+    public Optional<Registration> cancelRegistration(@RequestBody Registration registration) {
         return registrationService.cancelRegistration(registration);
     }
 }

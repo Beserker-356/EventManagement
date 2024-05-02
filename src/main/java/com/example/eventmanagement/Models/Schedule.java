@@ -24,6 +24,7 @@ public class Schedule {
     @ManyToOne
     private Organiser organiser;
 
+
     @ManyToOne
     private Event event;
 

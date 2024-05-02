@@ -112,11 +112,12 @@ public class EventServiceImpl implements EventService{
     public Schedule createSchedule(ScheduleDto scheduleDto) {
         Schedule schedule = convertScheduleDtoToSchedule(scheduleDto);
         List<Schedule> schedules = this.scheduleRepository.findByStartTimeLessThanEqualAndEndTimeGreaterThanEqualAndVenue(schedule.getEndTime(), schedule.getStartTime(), schedule.getVenue());
-
+        System.out.println("check1");
         if (!schedules.isEmpty())
             throw new ScheduleCoincidingException("Schedule with overlapping time intervals already exists , please change the time interval or venue");
-
-        schedule = this.scheduleRepository.save(schedule);
+        System.out.println("check2");
+        schedule = scheduleRepository.save(schedule);
+        System.out.println("check3");
         return schedule;
     }
 
