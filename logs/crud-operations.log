@@ -3,3 +3,11 @@
 2024-05-02 09:40:26.873 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant/3 -> GET request received for Participant with ID:3
 2024-05-02 09:42:39.638 [http-nio-8080-exec-5] INFO  c.e.e.Controller.EventController - At http://localhost:8080/participant -> POST request received to create a Participant with request body:{ name: e123, email: chess, phone_no: 0}
 2024-05-02 12:02:55.486 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create event for Organiser ID: 11 with request body:{ name: e123, description: null, password: null}
+2024-05-02 12:08:29.280 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/organiser -> GET request received for all organisers
+2024-05-02 13:08:31.701 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/organiser/10 -> GET request received for Organiser ID: 10
+2024-05-02 13:10:44.260 [http-nio-8080-exec-4] INFO  c.e.e.Controller.EventController - At http://localhost:8080/admin -> POST request received to create a Venue
+2024-05-02 13:12:05.790 [http-nio-8080-exec-8] INFO  c.e.e.Controller.EventController - At http://localhost:8080/organiser -> POST request received to create an Organiser with request body:{ name: deepak, email: deepak@gmail.com, phone_no: 1282929292, password: deepak12}
+2024-05-02 13:13:47.406 [http-nio-8080-exec-2] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create event for Organiser ID: 11 with request body:{ name: Standup, description: samay raina, password: null}
+2024-05-02 13:14:01.152 [http-nio-8080-exec-1] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create event for Organiser ID: 11 with request body:{ name: Standup, description: samay raina, password: deepak12}
+2024-05-02 13:17:48.998 [http-nio-8080-exec-4] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/11 -> POST request received to create Schedule by Organiser ID: 11
+2024-05-02 13:22:21.235 [http-nio-8080-exec-8] INFO  c.e.e.Controller.EventController - At http://localhost:8080/events/schedule/1 -> GET request received for Schedule ID: 1
